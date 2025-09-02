@@ -1,4 +1,4 @@
-/** @type{import("@storybook/react-webpack5").StorybookConfig} */
+/** @type{import("@storybook/react-vite").StorybookConfig} */
 module.exports = {
   stories: [
     "../src/**/*.stories.mdx",
@@ -8,27 +8,19 @@ module.exports = {
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    "@storybook/addon-webpack5-compiler-babel",
     "@chromatic-com/storybook"
   ],
 
   framework: {
-    name: "@storybook/react-webpack5",
+    name: "@storybook/react-vite",
     options: {},
+  },
+
+  core: {
+    builder: "@storybook/builder-vite",
   },
 
   docs: {},
 
   typescript: {},
-
-  babel: async (options) => {
-    return {
-      ...options,
-      presets: [
-        ...(options.presets || []),
-        [require.resolve("@babel/preset-typescript"), { allowDeclareFields: true }],
-        [require.resolve("@babel/preset-react"), { runtime: "automatic" }],
-      ],
-    };
-  },
 };

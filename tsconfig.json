@@ -16,8 +16,7 @@
     "allowSyntheticDefaultImports": true,
     "types": [
       "vite/client",
-      "vitest",
-      "node"
+      "vitest"
     ],
     "paths": {
       "@/*": [
