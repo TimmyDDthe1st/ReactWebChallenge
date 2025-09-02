@@ -1,9 +1,8 @@
-import React from "react";
 import { Outlet, NavLink } from "react-router-dom";
 
-import styles from "./AppLayout.module.css";
+import styles from "./layout.module.css";
 
-export const WebApp: React.FC = () => {
+export function RootLayout() {
 	return (
 		<div className={styles.appContainer}>
 			<header className={styles.headerBar}>

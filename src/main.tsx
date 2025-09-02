@@ -2,13 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import { WebApp } from "@/routes/WebApp";
-import { HomePage } from "@/routes/HomePage";
+import { RootLayout } from "@/routes/layout";
+import { HomePage } from "@/routes/home";
 
 const router = createBrowserRouter([
 	{
 		path: "/",
-		element: <WebApp />,
+		element: <RootLayout />,
 		children: [
 			{ index: true, element: <HomePage /> },
 		],

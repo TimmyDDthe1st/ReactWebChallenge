@@ -1,10 +1,10 @@
 import React from "react";
 
-import styles from "./Card.module.css";
+import styles from "./card.module.css";
 
 type CardProps = React.PropsWithChildren<{}>;
 
-export const Card: React.FC<CardProps> = ({ children }) => {
+export function Card({ children }: CardProps) {
 	return (
 		<div className={styles.container} data-testid="CardContainer">
 			{children}
