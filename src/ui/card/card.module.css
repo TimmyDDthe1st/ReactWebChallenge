@@ -1,9 +1,10 @@
 .container {
 	background-color: moccasin;
-	height: 150px;
+	height: 13rem;
 	border-radius: 8px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 8px;
+	padding: 3rem 3rem;
+	margin-bottom: 10px;
 }
