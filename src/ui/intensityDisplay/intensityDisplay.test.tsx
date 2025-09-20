@@ -9,22 +9,12 @@ describe("IntensityDisplay", () => {
     index: "moderate" as const,
   };
 
-  it("renders forecast value", () => {
+  it("renders intensity values", () => {
     render(<IntensityDisplay intensity={mockIntensity} />);
 
-    expect(screen.getByText("150")).toBeInTheDocument();
-  });
-
-  it("renders actual value", () => {
-    render(<IntensityDisplay intensity={mockIntensity} />);
-
-    expect(screen.getByText("120")).toBeInTheDocument();
-  });
-
-  it("renders index value", () => {
-    render(<IntensityDisplay intensity={mockIntensity} />);
-
-    expect(screen.getByText("moderate")).toBeInTheDocument();
+    expect(screen.getByText("150")).toBeVisible();
+    expect(screen.getByText("120")).toBeVisible();
+    expect(screen.getByText("moderate")).toBeVisible();
   });
 
   it("renders three list items", () => {

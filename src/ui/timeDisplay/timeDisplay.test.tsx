@@ -12,7 +12,7 @@ describe("TimeDisplay", () => {
     expect(screen.getByText("09:00 - 10:00")).toBeInTheDocument();
   });
 
-  it("renders formatted time range", () => {
+  it("renders invalid datetimes provided", () => {
     render(<TimeDisplay from="not-date-time" to="not-date-time" />);
 
     expect(screen.getByText("Invalid DateTimes provided")).toBeInTheDocument();
