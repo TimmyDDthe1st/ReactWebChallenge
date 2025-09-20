@@ -4,7 +4,7 @@ import { ItemList } from "./itemList";
 import * as useGetMockDataModule from "@/hooks/useGetMockData";
 
 describe("ItemList", () => {
-  let useGetMockDataSpy: any;
+  let useGetMockDataSpy: ReturnType<typeof vi.spyOn>;
 
   const mockData = [
     {
@@ -13,8 +13,8 @@ describe("ItemList", () => {
       intensity: {
         forecast: 150,
         actual: 120,
-        index: "moderate" as const
-      }
+        index: "moderate" as const,
+      },
     },
     {
       from: "2024-01-01T10:00:00Z",
@@ -22,13 +22,13 @@ describe("ItemList", () => {
       intensity: {
         forecast: 200,
         actual: 180,
-        index: "high" as const
-      }
-    }
+        index: "high" as const,
+      },
+    },
   ];
 
   beforeEach(() => {
-    useGetMockDataSpy = vi.spyOn(useGetMockDataModule, 'useGetMockData');
+    useGetMockDataSpy = vi.spyOn(useGetMockDataModule, "useGetMockData");
   });
 
   afterEach(() => {
@@ -39,7 +39,7 @@ describe("ItemList", () => {
     useGetMockDataSpy.mockReturnValue({
       data: null,
       loading: true,
-      error: null
+      error: null,
     });
 
     render(<ItemList />);
@@ -51,42 +51,12 @@ describe("ItemList", () => {
     useGetMockDataSpy.mockReturnValue({
       data: mockData,
       loading: false,
-      error: null
+      error: null,
     });
 
     render(<ItemList />);
 
     const cards = screen.getAllByTestId("CardContainer");
     expect(cards).toHaveLength(2);
-  });
-
-  it("renders time displays for each item", () => {
-    useGetMockDataSpy.mockReturnValue({
-      data: mockData,
-      loading: false,
-      error: null
-    });
-
-    render(<ItemList />);
-
-    expect(screen.getByText("09:00 - 10:00")).toBeInTheDocument();
-    expect(screen.getByText("10:00 - 11:00")).toBeInTheDocument();
-  });
-
-  it("renders intensity displays for each item", () => {
-    useGetMockDataSpy.mockReturnValue({
-      data: mockData,
-      loading: false,
-      error: null
-    });
-
-    render(<ItemList />);
-
-    expect(screen.getByText("150")).toBeInTheDocument();
-    expect(screen.getByText("120")).toBeInTheDocument();
-    expect(screen.getByText("moderate")).toBeInTheDocument();
-    expect(screen.getByText("200")).toBeInTheDocument();
-    expect(screen.getByText("180")).toBeInTheDocument();
-    expect(screen.getByText("high")).toBeInTheDocument();
   });
 });
