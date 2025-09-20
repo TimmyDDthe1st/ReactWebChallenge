@@ -8,7 +8,10 @@ interface TimeDisplayProps {
 }
 
 export const TimeDisplay: React.FC<TimeDisplayProps> = ({ from, to }) => {
-  return (
+  return formatTime(from) === "Invalid DateTime" ||
+    formatTime(to) === "Invalid DateTime" ? (
+    <p className={styles.timeDisplay}>{`Invalid DateTimes provided`}</p>
+  ) : (
     <p className={styles.timeDisplay}>{`${formatTime(from)} - ${formatTime(
       to
     )}`}</p>
